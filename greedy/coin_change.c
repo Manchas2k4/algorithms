@@ -5,6 +5,11 @@ int compare (const void * a, const void * b) {
   return ( *(int*)b - *(int*)a );
 }
 
+/**
+ * n 	  - number of different denominations
+ * coins  - array with the denominations of the coins
+ * amount - amount to be given in change 
+ */
 int coin_change(int n, int coins[], int amount) {
 	int minimum = 0, i;
 	
