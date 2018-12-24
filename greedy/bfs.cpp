@@ -8,7 +8,7 @@ using namespace std;
 
 typedef map<char, list<char> > Graph;
 
-list<char> dfs(const Graph &g, char startVertex) {
+list<char> bfs(const Graph &g, char startVertex) {
 	list<char> visited;
 	stack<char> xVisit;
 	
