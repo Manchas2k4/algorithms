@@ -1,7 +1,0 @@
-https://www.geeksforgeeks.org/activity-selection-problem-greedy-algo-1/
-https://www.geeksforgeeks.org/find-minimum-time-to-finish-all-jobs-with-given-constraints/
-https://www.geeksforgeeks.org/find-k-bookings-possible-given-arrival-departure-times/
-https://www.geeksforgeeks.org/job-sequencing-problem-set-1-greedy-algorithm/
-https://www.geeksforgeeks.org/largest-palindromic-number-permuting-digits/
-https://www.geeksforgeeks.org/find-largest-cube-formed-deleting-minimum-digits-number/
-https://www.geeksforgeeks.org/lexicographically-largest-subsequence-every-character-occurs-least-k-times/
