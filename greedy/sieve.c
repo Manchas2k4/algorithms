@@ -1,7 +1,20 @@
+/**
+	The program calculates the prime numbers less than N. 
+	The program receives the value of N. from the console.
+	
+	@author Pedro Perez
+	@version 1.0 16/01/2019
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+/**
+	@param n, the limit maximum.
+	@return an array indicating which numbers less than 
+			n are prime or not.
+*/
 char* sieve(int n) {
 	char* result;
 	int i, j;
