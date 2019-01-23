@@ -20,7 +20,7 @@ using namespace std;
 
 typedef map<int, list<int> > Graph;
 
-list<int> bfs(const Graph &g, char startVertex) {
+list<int> dfs(const Graph &g, char startVertex) {
 	list<int> visited;
 	stack<int> xVisit;
 	
@@ -28,10 +28,8 @@ list<int> bfs(const Graph &g, char startVertex) {
 	while (!xVisit.empty()) {
 		int vertex = xVisit.top(); xVisit.pop();
 		
-		printf("vertex = %i\n", vertex);
 		list<int>::iterator found = find(visited.begin(), visited.end(), vertex);
 		if (found == visited.end()) {
-			printf("not visited\n");
 			visited.push_back(vertex);
 			list<int> conections = g.at(vertex);
 			for (list<int>::iterator it = conections.begin(); it != conections.end(); it++) {
@@ -58,7 +56,7 @@ int main(int argc, char* argv[]) {
 	}
 	scanf("%i", &start);
 	
-	reachable = bfs(g, start);
+	reachable = dfs(g, start);
 	for (list<int>::iterator it = reachable.begin(); it != reachable.end(); it++) {
 		printf("%i ", (*it));
 	}
