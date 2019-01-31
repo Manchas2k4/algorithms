@@ -7,7 +7,7 @@ typedef long long int lli;
 
 int main(int argc, char* argv[]) {
 	int i, n;
-	lli a, b, p, tokens[MAX];
+	lli a, b, p, left, tokens[MAX];
 	
 	scanf("%i %lli %lli", &n, &a, &b);
 	
