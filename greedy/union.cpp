@@ -31,7 +31,7 @@ void QuickFind::join(uint p, uint q) {
 	pid = ids[p];
 	for (uint i = 0; i < size; i++) {
 		if (ids[i] == pid) {
-			ids[i] = ids[p];
+			ids[i] = ids[q];
 		}
 	}
 }
