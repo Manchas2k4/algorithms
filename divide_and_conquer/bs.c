@@ -11,7 +11,7 @@ int binary_search(int A[], int low, int high, int key) {
 		return -1;
 	} 
 	
-	int mid = (high + low) / 2;
+	int mid = low + (high - low) / 2;
 	if (key == A[mid]) {
 		return mid;
 	} else if (key < A[mid]) {
