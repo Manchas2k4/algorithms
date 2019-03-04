@@ -31,8 +31,11 @@ string common_prefix(string arr[], int low, int high) {
 		mid = low + (high - low) / 2;
 		string str1 = common_prefix(arr, low, mid);
 		string str2 = common_prefix(arr, mid + 1, high);
+		
 		return common_prefix_util(str1, str2);
-	}		
+	}	
+	
+	return string("aux");	
 }
 
 int main(int argc, char* argv[]) {
