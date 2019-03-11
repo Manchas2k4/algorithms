@@ -27,7 +27,7 @@ public class Task extends RecursiveTask<Integer> {
 				B[i] = A[left++];
 			} else {
 				B[i] = A[right++];
-				count++;
+				count = count + (mid - left + 1);
 			}
 			i++;
 		}

@@ -7,10 +7,8 @@ public class RecursiveInversion {
 	private static final int MAX = 100;
 	
 	public void fillArray(int A[]) {
-		Random r = new Random();
-		
 		for (int i = 0; i < A.length; i++) {
-			A[i] = r.nextInt(100) + 1;
+			A[i] = A.length - i;
 		}
 	}
 	
