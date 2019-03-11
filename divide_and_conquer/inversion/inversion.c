@@ -12,9 +12,8 @@ void copy(int *A, int *B, int low, int high) {
 int merge_and_count(int *A, int *B, int low, int mid, int high) {
 	int left, right, i, count;
 	
-	left = low;
+	left = i = low;
 	right = mid + 1;
-	i = 0;
 	count = 0;
 	while (left <= mid && right <= high) {
 		if (A[left] < A[right]) {
@@ -25,6 +24,14 @@ int merge_and_count(int *A, int *B, int low, int mid, int high) {
 			right++;
 			count++;
 		}
+		i++;
+	}
+	while (left <= mid) {
+		B[i] = A[left++];
+		i++;
+	}
+	while (right <= high) {
+		B[i] = A[right++];
 		i++;
 	}
 	return count;
@@ -41,9 +48,8 @@ int sort_and_count(int *A, int *B, int low, int high) {
 		left = sort_and_count(A, B, low, mid);
 		right = sort_and_count(A, B, mid + 1, high);
 		r = merge_and_count(A, B, low, mid, high);
-		
+		return (r + left + right);
 	}
-	return (r + left + right);
 }
 
 int main(int argc, char* argv[]) {
@@ -59,6 +65,7 @@ int main(int argc, char* argv[]) {
 	
 	printf("result = %i\n",  sort_and_count(array, temp, 0, n - 1));
 	
+	free(temp);
 	free(array);
 	return 0;
 }
