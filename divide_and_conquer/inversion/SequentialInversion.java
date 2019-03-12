@@ -21,7 +21,7 @@ public class SequentialInversion {
 				B[i] = A[left++];
 			} else {
 				B[i] = A[right++];
-				count++;
+				count = count + (mid - left + 1);
 			}
 			i++;
 		}
@@ -57,10 +57,8 @@ public class SequentialInversion {
 	}
 	
 	public void fillArray(int A[]) {
-		Random r = new Random();
-		
 		for (int i = 0; i < A.length; i++) {
-			A[i] = r.nextInt(100) + 1;
+			A[i] = A.length - i;
 		}
 	}
 	

@@ -17,12 +17,10 @@ int merge_and_count(int *A, int *B, int low, int mid, int high) {
 	count = 0;
 	while (left <= mid && right <= high) {
 		if (A[left] < A[right]) {
-			B[i] = A[left];
-			left++;
+			B[i] = A[left++];
 		} else {
-			B[i] = A[right];
-			right++;
-			count++;
+			B[i] = A[right++];
+			count = count + (mid - left + 1);
 		}
 		i++;
 	}
