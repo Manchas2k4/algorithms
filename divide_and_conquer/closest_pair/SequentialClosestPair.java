@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class SequentialClosestPair {
 	private double dist(Point p1, Point p2) {
@@ -6,11 +7,11 @@ public class SequentialClosestPair {
 						  Math.pow(p1.getY() - p2.getY(), 2) );
 	}
 	
-	private double bruteForce(Point P[]) {
+	private double bruteForce(Point P[], int low, int high) {
 		double min = Double.MAX_VALUE;
-		for (int i = 0; i < P.length; i++) {
-			for (int j = 0; j < P.length; j++) {
-				if (dist(P[i], P[j]) < min) {
+		for (int i = low; i <= high; i++) {
+			for (int j = low; j <= high; j++) {
+				if (i != j && dist(P[i], P[j]) < min) {
 					min = dist(P[i], P[j]);
 				}
 			}
@@ -18,18 +19,22 @@ public class SequentialClosestPair {
 		return min;
 	}
 	
-	private void merge(int A[], int B[], int low, int mid, int high) {
-		int left ,right, i, count;
+	private void copy(Point A[], Point B[], int low, int high) {
+		for (int i = low; i <= high; i++) {
+			A[i] = B[i];
+		}
+	}
+	
+	private void merge(Point A[], Point B[], int low, int mid, int high) {
+		int left ,right, i;
 		
 		left = i = low;
 		right = mid + 1;
-		count = 0;
 		while (left <= mid && right <= high) {
-			if (A[left] < A[right]) {
+			if (A[left].compareTo(A[right]) < 0) {
 				B[i] = A[left++];
 			} else {
 				B[i] = A[right++];
-				count++;
 			}
 			i++;
 		}
@@ -41,7 +46,6 @@ public class SequentialClosestPair {
 			B[i] = A[right++];
 			i++;
 		}
-		return count;		
 	}
 	
 	private double stripClosest(Point P[], int n, double d) {
@@ -58,10 +62,10 @@ public class SequentialClosestPair {
 	
 	private double closestUtil(Point Px[], Point Py[], Point Aux[], int low, int high) {
 		double d, dl, dr;
-		int j, mid, li, ri;
+		int j, mid;
 		
 		if ( (high - low + 1) <= 3 ) {
-			return bruteForce(Px);
+			return bruteForce(Px, low, high);
 		}
 		
 		mid = low + ((high - low) / 2);
@@ -72,10 +76,11 @@ public class SequentialClosestPair {
 		d = Math.min(dl, dr);
 		
 		merge(Py, Aux, low, mid, high);
+		copy(Py, Aux, low, high);
 		
 		j = 0;
 		for (int i = low; i <= high; i++) {
-			if (Math.abs(Py.getX() - midPoint.getX()) < d) {
+			if (Math.abs(Py[i].getX() - midPoint.getX()) < d) {
 				Aux[j++] = Py[i];
 			}
 		}
@@ -101,9 +106,25 @@ public class SequentialClosestPair {
 	}
 	
 	public static void main(String args[]) {
-		Point P[] = {new Point(2, 3), new Point(12, 30), new Point(40, 50), new Point(5, 1), new Point(12, 10), new Point(3, 4)};
+		double dist = 0;
+		int n, x, y;
+		long start, end;
+		Scanner stdIn = new Scanner(System.in);
 		SequentialClosestPair sqp = new SequentialClosestPair();
 		
-		System.out.println("The smallest distance is " + sqp.closestPair(P));
+		n = stdIn.nextInt();
+		Point P[] = new Point[n];
+		for (int i = 0; i < n; i++) {
+			x = stdIn.nextInt();
+			y = stdIn.nextInt();
+			P[i] = new Point(x, y);
+		}
+		
+		start = System.currentTimeMillis();
+		dist = sqp.closestPair(P);
+		end = System.currentTimeMillis();
+		
+		System.out.println("The smallest distance is " + dist);
+		System.out.println("time = " + (end - start) + " ms");
 	}
 }

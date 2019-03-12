@@ -1,4 +1,4 @@
-public class Point {
+public class Point implements Comparable<Point> {
 	private final int x, y;
 	
 	public Point() {
@@ -16,5 +16,21 @@ public class Point {
 	
 	public int getY() {
 		return y;
+	}
+	
+	public int compareTo(Point other) {
+		if (this.getY() < other.getY()) {
+			return -1;
+		}
+		if (this.getY() > other.getY()) {
+			return +1;
+		}
+		if (this.getX() < other.getX()) {
+			return -1;
+		}
+		if (this.getX() > other.getX()) {
+			return +1;
+		}
+		return 0;
 	}
 }
