@@ -57,7 +57,7 @@ public class SequentialClosestPair {
 				}
 			}
 		}
-    return min; 
+    	return min; 
 	}
 	
 	private double closestUtil(Point Px[], Point Py[], Point Aux[], int low, int high) {
