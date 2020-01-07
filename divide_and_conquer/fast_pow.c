@@ -18,8 +18,8 @@ double fast_pow(double x, int n) {
 int main(int argc, char* argv[]) {
 	double x;
 	int n;
-	
+
 	scanf("%lf %i", &x, &n);
-	printf("result = %.2lf\n", fast_pow(x, n));
+	printf("result = %lf\n", fast_pow(x, n));
 	return 0;
 }
