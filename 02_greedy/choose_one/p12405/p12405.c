@@ -6,7 +6,7 @@
 int main(int argc, char* argv[]) {
 	int i, j, n, m, acum;
 	char cadena[MAX], aux;
-	
+
 	scanf("%i", &n);
 	for (i = 1; i <= n; i++) {
 		scanf("%i\n", &m);
@@ -15,10 +15,10 @@ int main(int argc, char* argv[]) {
 		for (j = 0; j < m; ) {
 			if(cadena[j] == '#') {
 				j++;
-            } else {
+      } else {
 				acum++;
 				j += 3;
-            }
+      }
 		}
 		printf("Case %i: %i\n", i, acum);
 	}
